@@ -1,0 +1,36 @@
+<h1>create a new contact</h1>
+
+<% if @contact.errors.any? %>
+    <h2>The following errors occured, hence the contact was not saved:</h2>
+    <ul>  
+        <% @contact.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_with scope: :contact, url: contacts_path, local: true do |f| %>
+    <p>
+        <%= f.label  :first_name %> <br/>
+        <%= f.text_field :first_name %>
+    </p>
+
+    <p>
+    <%= f.label  :last_name %> <br/>
+    <%= f.text_field :last_name %>
+    </p>
+
+    <p>
+    <%= f.label  :email %> <br/>
+    <%= f.text_field :email %>
+    </p>
+
+    <p>
+    <%= f.label  :phone_number %> <br/>
+    <%= f.text_field :phone_number %>
+    </p>
+
+    <p>
+        <%= f.submit %>
+    </p>
+<%end %>
