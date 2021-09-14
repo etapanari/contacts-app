@@ -18,7 +18,9 @@
             <td><%= contact.last_name %></td>
             <td><%= contact.email %></td>
             <td><%= contact.phone_number %></td>
-            <td>actions</td>
+            <td><%= link_to 'Show', contact_path(contact) %></td>
+            <td><%= link_to 'Edit', contact_path(contact) %></td>
+            <td><%= link_to 'Delete', contact_path(contact.id), method: :delete %></td>
         </tr>
         <% end %>
     </tbody>
