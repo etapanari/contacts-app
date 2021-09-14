@@ -1,4 +1,4 @@
-<h1>create a new contact</h1>
+<h1>Edit contact</h1>
 
 <% if @contact.errors.any? %>
     <h2>The following errors occured, hence the contact was not saved:</h2>
@@ -9,7 +9,8 @@
     </ul>
 <% end %>
 
-<%= form_with scope: :contact, url: contacts_path, local: true do |f| %> 
+<%= form_with(model: @contact, local: true) do |f| %>
+
     <p>
         <%= f.label  :first_name %> <br/>
         <%= f.text_field :first_name %>
