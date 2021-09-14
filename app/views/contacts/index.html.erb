@@ -7,7 +7,7 @@
             <th>Last name name</th>
             <th>Email</th>
             <th>Phone number</th>
-            <th>Actions</th>
+            <th colspan="3">Actions</th>
         </tr>
     </thead>
 
@@ -18,11 +18,16 @@
             <td><%= contact.last_name %></td>
             <td><%= contact.email %></td>
             <td><%= contact.phone_number %></td>
+
             <td><%= link_to 'Show', contact_path(contact) %></td>
-            <td><%= link_to 'Edit', contact_path(contact) %></td>
-            <td><%= link_to 'Delete', contact_path(contact.id), method: :delete %></td>
+            <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+            <td><%= link_to 'Delete', contact_path(contact.id), method: :delete, data: {confirm: "Are you sure?"} %></td>
         </tr>
         <% end %>
     </tbody>
 
 </table>
+
+<p>
+    <%= link_to 'Create new contact', new_contact_path%>
+</p>

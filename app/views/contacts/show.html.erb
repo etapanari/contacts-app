@@ -4,3 +4,9 @@
 <p><strong>Last name: </strong><%= @contact.last_name%></p>
 <p><strong>Email: </strong><%= @contact.email%></p>
 <p><strong>Phone number: </strong><%= @contact.phone_number%></p>
+
+<p>
+    <%= link_to 'Edit', edit_contact_path(@contact) %> | 
+    <%= link_to 'Delete', contact_path(@contact), method: :delete, data: {confirm: "Are you sure?"} %> |
+    <%= link_to 'Return to Contacts listing', contacts_path %>  
+</p>
