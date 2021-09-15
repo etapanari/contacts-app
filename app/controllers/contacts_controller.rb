@@ -1,6 +1,9 @@
 class ContactsController < ApplicationController
+
+    before_action :set_contact, only: [:show, :edit, :update, :destroy]
+
     def show
-        @contact = Contact.find(params[:id])
+
     end
 
     def index
@@ -12,12 +15,11 @@ class ContactsController < ApplicationController
     end
 
     def edit
-        @contact = Contact.find(params[:id])
+
     end
 
-
     def create
-        @contact = Contact.new(params.require(:contact).permit(:first_name, :last_name, :email, :phone_number))
+        @contact = Contact.new(contact_params)
         if @contact.save 
             flash[:notice] = "Contact was created successfully."
             redirect_to @contact
@@ -28,8 +30,7 @@ class ContactsController < ApplicationController
 
 
     def update
-        @contact = Contact.find(params[:id])
-        if @contact.update(params.require(:contact).permit(:first_name, :last_name, :email, :phone_number))
+        if @contact.update(contact_params)
           flash[:notice] = "Contact was updated successfully."
           redirect_to @contact
         else
@@ -38,8 +39,17 @@ class ContactsController < ApplicationController
     end
 
     def destroy
-        @contact = Contact.find(params[:id])
         @contact.destroy
         redirect_to contacts_path
     end
+
+    private
+    def set_contact
+        @contact = Contact.find(params[:id])
+    end
+
+    def contact_params
+        params.require(:contact).permit(:first_name, :last_name, :email, :phone_number)        
+    end
+    
 end
