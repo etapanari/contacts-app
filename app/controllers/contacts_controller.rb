@@ -3,26 +3,23 @@ class ContactsController < ApplicationController
     before_action :set_contact, only: [:show, :edit, :update, :destroy, :changes]
 
     def changes
-        @audits = @contact.audits.take(8) # works
+
+        number_of_audits = @contact.audits.length
+        @audits = @contact.audits.take(number_of_audits) 
         @audited_changes = @contact.audits.select(:audited_changes)
-        number_of_audits = @contact.audits.length-1
-    
+        @current_first_name=""
+        @current_last_name=""
+        @current_email=""
+        @current_phone_number=""
+        @timestamp=""
+
         @all_changes = []
-        (0..number_of_audits).each do | index|
-            
-            @changes = @audits[index].audited_changes 
-            #@changes[:created_at]=@audits[index].created_at
-            @changes.merge!(created_at:@audits[index].created_at)
+        (0..number_of_audits-1).each do | index|            
+            @changes = @audits[index].audited_changes
+            @changes["created_at"] = @audits[index].created_at
+            #@changes.merge!(created_at:@audits[index].created_at)
             @all_changes.append(@changes)
-
         end
-
-        @audits.each do |item|
-            
-            puts @audited_changes
-        end
-
-        # @changes = @contact.audits.last.audited_changes
     end
 
     def show

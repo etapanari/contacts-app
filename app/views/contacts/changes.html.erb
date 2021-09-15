@@ -1,4 +1,4 @@
-<h1> Histoty of Changes </h1>
+<h1> History of changes </h1>
 
 <table>
     <thead>
@@ -15,17 +15,50 @@
     <tbody>
 
     <% @all_changes.each do |hash| %>
+
+        <%  @timestamp= hash["created_at"]%>                
         <tr>
-        <% hash.each do |key, value| %>
-            <% if not value.kind_of?(Array) %>
-                <td>  <%= value %> </td>
+        <% hash.each do |key, value| %>   
+
+            <% if not value.kind_of?(Array) %> 
+                <% if key=="first_name" %>
+                   <%  @current_first_name=value %>
+                <% elsif key=="last_name" %>
+                   <%  @current_last_name=value %>
+                <% elsif key=="email" %>
+                   <%  @current_email=value %>
+                <% elsif key=="phone_number" %>
+                   <%  @current_phone_number=value %>                   
+                <% end %>
+
             <% elsif value.length() ==2 %>
-               <td> <%= value[1] %> </td>
+                <% if key=="first_name" %>
+                   <%  @current_first_name=value[1] %>
+                <% elsif key=="last_name" %>
+                   <%  @current_last_name=value[1] %>
+                <% elsif key=="email" %>
+                   <%  @current_email=value[1] %>
+                <% elsif key=="phone_number" %>
+                   <%  @current_phone_number=value[1] %>                   
+                <% end %>
             <% end %>
+          
         <% end %>
+            <td> <%= @current_first_name %> </td>
+            <td> <%= @current_last_name %> </td>
+            <td> <%= @current_email %> </td>
+            <td> <%= @current_phone_number %> </td> 
+            <td> <%= @timestamp %> </td> 
         </tr>
     <% end %>
 
     </tbody>
 
 </table>
+
+
+<p>
+    <%= link_to 'Contacts listing', contacts_path %>  |
+    <%= link_to 'Current Contact', contact_path %>
+
+</p>
