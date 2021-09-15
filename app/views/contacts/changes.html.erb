@@ -1,13 +1,31 @@
-<h1> Changes </h1>
+<h1> Histoty of Changes </h1>
 
+<table>
+    <thead>
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th>Phone number</th>
+            <th>Timestamp</th>
 
-<% @all_changes.each do |hash| %>
-    <% hash.each do |key, value| %>
-        <% if not value.kind_of?(Array) %>
-            <p><strong> <%= key %> : </strong> <%= value %></p>
-        <% elsif value.length() ==2 %>
-            <p><strong> <%= key %> : </strong> <%= value[1] %></p>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    <% @all_changes.each do |hash| %>
+        <tr>
+        <% hash.each do |key, value| %>
+            <% if not value.kind_of?(Array) %>
+                <td>  <%= value %> </td>
+            <% elsif value.length() ==2 %>
+               <td> <%= value[1] %> </td>
+            <% end %>
         <% end %>
+        </tr>
     <% end %>
-<% end %>
 
+    </tbody>
+
+</table>

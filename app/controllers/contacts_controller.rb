@@ -11,6 +11,8 @@ class ContactsController < ApplicationController
         (0..number_of_audits).each do | index|
             
             @changes = @audits[index].audited_changes 
+            #@changes[:created_at]=@audits[index].created_at
+            @changes.merge!(created_at:@audits[index].created_at)
             @all_changes.append(@changes)
 
         end
