@@ -3,6 +3,11 @@ class ContactsController < ApplicationController
     before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
     def show
+        
+        audit = @contact.audits.last
+        audit.action 
+        @changes = audit.audited_changes
+        puts "Audited action"
 
     end
 
