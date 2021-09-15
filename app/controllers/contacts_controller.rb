@@ -6,18 +6,17 @@ class ContactsController < ApplicationController
 
         number_of_audits = @contact.audits.length
         @audits = @contact.audits.take(number_of_audits) 
-        @audited_changes = @contact.audits.select(:audited_changes)
+
         @current_first_name=""
         @current_last_name=""
         @current_email=""
         @current_phone_number=""
-        @timestamp=""
+        @current_timestamp=""
 
         @all_changes = []
-        (0..number_of_audits-1).each do | index|            
+        (0..number_of_audits-1).each do | index |            
             @changes = @audits[index].audited_changes
             @changes["created_at"] = @audits[index].created_at
-            #@changes.merge!(created_at:@audits[index].created_at)
             @all_changes.append(@changes)
         end
     end

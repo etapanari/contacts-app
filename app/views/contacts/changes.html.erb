@@ -16,7 +16,7 @@
 
     <% @all_changes.each do |hash| %>
 
-        <%  @timestamp= hash["created_at"]%>                
+            
         <tr>
         <% hash.each do |key, value| %>   
 
@@ -28,8 +28,12 @@
                 <% elsif key=="email" %>
                    <%  @current_email=value %>
                 <% elsif key=="phone_number" %>
-                   <%  @current_phone_number=value %>                   
+                   <%  @current_phone_number=value %>  
+                <% elsif key=="created_at" %>
+                   <%  @current_timestamp=value %>                                         
                 <% end %>
+              
+                                
 
             <% elsif value.length() ==2 %>
                 <% if key=="first_name" %>
@@ -39,7 +43,9 @@
                 <% elsif key=="email" %>
                    <%  @current_email=value[1] %>
                 <% elsif key=="phone_number" %>
-                   <%  @current_phone_number=value[1] %>                   
+                   <%  @current_phone_number=value[1] %>
+                <% elsif key=="created_at" %>
+                   <%  @current_timestamp=value %>                                          
                 <% end %>
             <% end %>
           
@@ -48,7 +54,7 @@
             <td> <%= @current_last_name %> </td>
             <td> <%= @current_email %> </td>
             <td> <%= @current_phone_number %> </td> 
-            <td> <%= @timestamp %> </td> 
+            <td> <%= @current_timestamp %> </td> 
         </tr>
     <% end %>
 
