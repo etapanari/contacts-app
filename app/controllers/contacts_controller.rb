@@ -5,13 +5,14 @@ class ContactsController < ApplicationController
     def changes
         @audits = @contact.audits.take(8) # works
         @audited_changes = @contact.audits.select(:audited_changes)
-        a = [0,1,2,3,4,5,6,7]
+        number_of_audits = @contact.audits.length-1
+    
         @all_changes = []
-        for index in a
+        (0..number_of_audits).each do | index|
             
-            @changes = @audits[index].audited_changes # works
+            @changes = @audits[index].audited_changes 
             @all_changes.append(@changes)
-            #puts @changes
+
         end
 
         @audits.each do |item|
