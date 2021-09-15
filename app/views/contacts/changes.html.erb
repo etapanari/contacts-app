@@ -1,9 +1,13 @@
 <h1> Changes </h1>
 
 
-
-<% @changes.each do |key, value| %>
-    <p><strong> <%= key %> : </strong> <%= value[0] %></p>
-
+<% @all_changes.each do |hash| %>
+    <% hash.each do |key, value| %>
+        <% if not value.kind_of?(Array) %>
+            <p><strong> <%= key %> : </strong> <%= value %></p>
+        <% elsif value.length() ==2 %>
+            <p><strong> <%= key %> : </strong> <%= value[1] %></p>
+        <% end %>
+    <% end %>
 <% end %>
 
