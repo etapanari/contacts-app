@@ -1,14 +1,26 @@
 class ContactsController < ApplicationController
 
-    before_action :set_contact, only: [:show, :edit, :update, :destroy]
+    before_action :set_contact, only: [:show, :edit, :update, :destroy, :changes]
+
+    def changes
+        @audits = @contact.audits.take(8) # works
+        @audited_changes = @contact.audits.select(:audited_changes)
+        a = [0,1,2,3,4,5,6,7]
+        for index in a
+            
+            @first_changes = @audits[index].audited_changes # works
+            puts @first_changes
+        end
+
+        @audits.each do |item|
+            
+            puts @audited_changes
+        end
+
+        # @changes = @contact.audits.last.audited_changes
+    end
 
     def show
-        
-        audit = @contact.audits.last
-        audit.action 
-        @changes = audit.audited_changes
-        puts "Audited action"
-
     end
 
     def index

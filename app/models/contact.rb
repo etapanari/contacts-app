@@ -1,5 +1,5 @@
 class Contact < ApplicationRecord
-    audited max_audits: 50
+    audited max_audits: 100
     validates :first_name, presence: true, length: {minimum: 2 , maximum: 100}
     validates :last_name, presence: true, length: {minimum: 2 , maximum: 100}
     validates :email, presence: true, email: true, length: {minimum: 2 , maximum: 50}
