@@ -2,15 +2,15 @@
 
 **Dependencies**
 
-Install all the gems required by runnin:
+Install all the gems required by running:
 
 ```
 $ bundle install
 ```
 
-**Audit GEM installation**
+**Audited GEM installation**
 
-This project requires the installation of the [audited](https://github.com/collectiveidea/audited) gem to implement the Edits History feature.
+This project requires the installation of the [audited](https://github.com/collectiveidea/audited) gem to implement the 'Edits History' feature.
 
 For that please run the following commands to install the gem and start the DB migration:
 
