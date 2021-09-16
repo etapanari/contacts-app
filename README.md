@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Dependencies**
 
-Things you may want to cover:
+This project requires the installation of the [audited](https://github.com/collectiveidea/audited) gem to implement the Edit's History feature.
 
-* Ruby version
+For that please run the following commands to install the gem and start the DB migration:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+$ rails generate audited:install
+$ rake db:migrate
+```
